@@ -1,8 +1,4 @@
-```
-npm install
-npm run dev
-```
+## REST API Specification
 
-```
-open http://localhost:3000
-```
+| Endpoint | HTTP | Description |
+| `/relic` | `GET` | Get all relic and its information |
