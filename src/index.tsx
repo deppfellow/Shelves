@@ -46,10 +46,10 @@ app.get('/relic/:id', (c) => {
 app.post('relic', (c) => {
     const newRelic: Relic = {
         id: Number(c.req.query('id')),
-        name: c.req.query('name')!,
-        rarity: c.req.query('rarity')!,
+        name: c.req.query('name') ?? 'Hope',
+        rarity: c.req.query('rarity') ?? 'None',
         shop_cost: Number(c.req.query('shop_cost')),
-        item_usage: c.req.query('item_usage')!,
+        item_usage: c.req.query('item_usage') ?? 'Hope',
     };
     relics.push(newRelic);
 

@@ -1,5 +1,7 @@
 ## REST API Specification
 
+_Hah. What would you like purchase today, my friend?_
+
 <table>
     <thead>
         <tr>
