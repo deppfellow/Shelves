@@ -1,6 +1,5 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
-import fs, { readlinkSync } from 'node:fs';
 
 const app = new Hono();
 const port: number = 3000;
@@ -30,41 +29,38 @@ let relics = [
     },
 ];
 
-app.get('/relic', (c) => {
-    return c.json(relics);
+app.get('/relics', (c) => {
+    c.status(200);
+    return c.json(relics, 200);
 });
 
-app.get('/relic/:id', (c) => {
+app.get('/relics/:id', (c) => {
     const id = c.req.param('id');
     const relic = relics.find((relic) => relic.id === Number(id));
     if (relic) {
         return c.json(relic);
     }
-    return c.json({ message: 'Relic not found' });
+    return c.json({ message: 'Relic not found' }, 404);
 });
 
-app.post('relic', (c) => {
-    const newRelic: Relic = {
-        id: Number(c.req.query('id')),
-        name: c.req.query('name') ?? 'Hope',
-        rarity: c.req.query('rarity') ?? 'None',
-        shop_cost: Number(c.req.query('shop_cost')),
-        item_usage: c.req.query('item_usage') ?? 'Hope',
-    };
+app.post('/relics', async (c) => {
+    let newRelic = await c.req.json<Relic>();
+    newRelic.id = relics.length + 1;
+
     relics.push(newRelic);
 
     return c.json(newRelic, 201);
 });
 
-app.delete('/relic', (c) => {
+app.delete('/relics', (c) => {
     relics = [];
-    return c.json({ message: 'All relics deleted' });
+    return c.json({ message: 'All relics deleted' }, 200);
 });
 
-app.delete('/relic/:id', (c) => {
+app.delete('/relics/:id', (c) => {
     const id = c.req.param('id');
     relics = relics.filter((relic) => relic.id !== Number(id));
-    return c.json({ message: `Relic with id ${id} deleted` });
+    return c.json({ message: `Relic with id ${id} deleted` }, 200);
 });
 
 serve({ fetch: app.fetch, port });
