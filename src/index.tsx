@@ -30,6 +30,9 @@ let relics = [
 ];
 
 app.get('/relics', (c) => {
+    // be consistent in how you use the methods
+    // do you want to set it in c.status?
+    // or do you want to pass as second argument in c.json?
     c.status(200);
     return c.json(relics, 200);
 });
