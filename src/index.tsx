@@ -12,7 +12,7 @@ interface Relic {
     item_usage: string;
 }
 
-let relics = [
+let relics: Relic[] = [
     {
         id: 1,
         name: 'Ursus Big Bread',
