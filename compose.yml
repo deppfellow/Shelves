@@ -1,3 +1,13 @@
+# Compose file containeing:
+# Version
+# Services
+### Service name
+### Image
+### Port
+### Environment
+### Container name
+### Volumes
+
 # services:
 #     backend:
 #         image:
