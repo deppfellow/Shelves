@@ -4,13 +4,16 @@
 # docker ps -a ==> look the container status
 # docker logs -f <container_name> ==> look up on container logs  
 
+# Dont invalidate build cache
+
 FROM node
 
 WORKDIR /usr/src/app
 
-# Reorder the COPY and RUN step to not invalidate build cache
-COPY . .
+COPY package*.json .
 
 RUN npm install
+
+COPY . .
 
 CMD ["npm", "run", "dev"]

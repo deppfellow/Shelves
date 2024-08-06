@@ -1,10 +1,12 @@
 {
     "name": "month-4-api",
     "scripts": {
-        "dev": "tsx watch src/index.tsx"
+        "dev": "tsx watch src/index.tsx",
+        "start": "npm run src/index.tsx"
     },
     "dependencies": {
         "@hono/node-server": "^1.12.0",
+        "dotenv": "^16.4.5",
         "hono": "^4.5.1"
     },
     "devDependencies": {
