@@ -1,45 +1,27 @@
-## REST API Specification
+# X Bookmarks Shelve
 
-_Hah. What would you like purchase today, my friend?_
+RESTful implementation for organizing twitter bookmarks. Organize . Built using Hono and Typescript.
 
-<table>
-    <thead>
-        <tr>
-            <th>Endpoint</th>
-            <th>HTTP</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>/relic</code></td>
-            <td><code>GET</code></td>
-            <td>Retrieve all relic and its information</td>
-        </tr>
-        <tr>
-            <td><code>/relic/:id</code></td>
-            <td><code>GET</code></td>
-            <td>Retrieve single relic and its information given id</td>
-        </tr>
-        <tr>
-            <td><code>/relic</code></td>
-            <td><code>POST</code></td>
-            <td>Add new relic into storage</td>
-        </tr>
-        <tr>
-            <td><code>/relic</code></td>
-            <td><code>DELETE</code></td>
-            <td>Delete all relic and its information</td>
-        </tr>
-        <tr>
-            <td><code>/relic/:id</code></td>
-            <td><code>DELETE</code></td>
-            <td>Delete single relic and its information given id</td>
-        </tr>
-        <tr>
-            <td><code>/relic/:id</code></td>
-            <td><code>PUT</code></td>
-            <td>Update the relic information given id</td>
-        </tr>
-    </tbody>
-</table>
+|  HTTP   |     Endpoint     |                  Description                  |
+| :-----: | :--------------: | :-------------------------------------------: |
+| `\GET`  |   `bookmarks`    | Retrieve all bookmarks for the logged-in user |
+| `\POST` |   `bookmarks`    |     Add a new bookmark from a Twitter URL     |
+| `\POST` | `/auth/register` |              Register a new user              |
+| `\POST` |  `/auth/login`   |                 Log in a user                 |
+| `\POST` |  `/auth/logout`  |                Log out a user                 |
+
+## Database Structure
+
+This project consist of three table with its schema defined as image below:
+![Shelves Schema](./Shelves_dbdocs.jpg)
+
+## Run Project
+
+To run the project, you can either clone and deploy on your local machine or using Docker. To run on local machine, run
+
+```bash
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3000` on your browser.

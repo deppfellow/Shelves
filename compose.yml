@@ -6,20 +6,20 @@
 
 services:
     backend:
-        image: raidr-4-api:latest
-        ports:
-            - '3101:3000'
         build:
             context: .
+        ports:
+            - '3101:3000'
         depends_on:
             - db
 
     db:
-        image: postgres:latest
+        image: postgres:16
         ports:
             - '5432:5432'
         env_file:
-            - .env
+            - path: .env
+              required: true
         # environment:
         #     POSTGRES_USER: ${POSTGRES_USER}
         #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -31,3 +31,6 @@ services:
 
             # # Volumes tags also used to add a postgres initialization script
             # - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+    db-data:
