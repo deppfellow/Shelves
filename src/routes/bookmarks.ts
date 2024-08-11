@@ -28,17 +28,17 @@ app.get('/', (c) => {
     );
 });
 
-app.post('/', async (c) => {
-    const body = await c.req.json();
-    bookmark.push({ ...body, id: bookmark.length + 1 });
+// app.post('/', async (c) => {
+//     const body = await c.req.json();
+//     bookmark.push({ ...body, id: bookmark.length + 1 });
 
-    return c.json(
-        {
-            message: 'Bookmark added',
-            data: body,
-        },
-        201
-    );
-});
+//     return c.json(
+//         {
+//             message: 'Bookmark added',
+//             data: body,
+//         },
+//         201
+//     );
+// });
 
 export default app;

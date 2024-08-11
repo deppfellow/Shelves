@@ -20,14 +20,10 @@ services:
         env_file:
             - path: .env
               required: true
-        # environment:
-        #     POSTGRES_USER: ${POSTGRES_USER}
-        #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-        #     POSTGRES_DB: ${POSTGRES_DB}
         volumes:
             # Volumes tags are used to persist data between container restarts
             # Syntax follows as <folder path on local machine>:<folder path to retrieve on container>
-            - ${PWD}/db-data/:/var/lib/postgresql/data/
+            - db-data:/var/lib/postgresql/data/
 
             # # Volumes tags also used to add a postgres initialization script
             # - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
