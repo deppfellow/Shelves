@@ -1,19 +1,16 @@
 // This file used to connect into Postgres without using Drizzle ORM
 
 import { Pool } from 'pg';
-// import dotenv from 'dotenv';
-// import path from 'path';
+import './env';
 
 // const __dirname = import.meta.dirname;
-// console.log(__dirname);
-
 // dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const pool = new Pool({
-    user: process.env.POSTGRES_USER || 'deppfellow',
-    database: process.env.POSTGRES_DB || 'shelves_db',
-    password: process.env.POSTGRES_PASSWORD || 'passwd',
-    host: 'localhost',
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORD,
+    host: process.env.POSTGRES_HOST || 'localhost',
     port: 5432,
 });
 

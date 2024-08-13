@@ -28,3 +28,4 @@ lerna-debug.log*
 .DS_Store
 ./src/index-playground.tsx
 notes/
+db-data/
